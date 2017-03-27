@@ -58,3 +58,24 @@ int corCIEXYZtoLab(float X, float Y, float Z, float* L, float* a, float* b, int 
 
   return (*L<0||*L>100)?0:1;
 }
+
+
+
+def inv_gamma_srgb(x):
+	ft = t = (x > 0) ? x : -x
+	ft = t/12.92
+	if t > 0.04045:
+		ft = pow((t+0.055)/1.055,2.4)
+	return (x > 0) ? ft : -ft
+
+# RGB to CIEXYZ
+def rgb2ciexyz(R,G,B, reference_light):
+	rc = inv_gamma_srgb(R)
+	gc = inv_gamma_srgb(G)
+	bc = inv_gamma_srgb(B)
+
+	X = (Rc*0.4124564 + Gc*0.3575761 + Bc*0.1804375);
+	Y = (Rc*0.2126729 + Gc*0.7151522 + Bc*0.0721750);
+	Z = (Rc*0.0193339 + Gc*0.1191920 + Bc*0.9503041);
+
+	return (X<0||Y<0||Z<0) ? 0 : 1;
