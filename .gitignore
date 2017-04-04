@@ -1,2 +1,6 @@
 *.jpg
 *.png
+*.pyc
+axial/*
+slic/*
+old_backup/*
