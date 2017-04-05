@@ -1,6 +1,12 @@
 *.jpg
 *.png
 *.pyc
-axial/*
-slic/*
-old_backup/*
+t1/axial/*
+t1/slic/*
+t1/old_backup/*
+t1/luiz/*
+t1/*.jpg
+t1/*.png
+t1/*.pyc
+t2/*.jpg
+t2/*.png
